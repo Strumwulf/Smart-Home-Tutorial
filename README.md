@@ -36,7 +36,8 @@
     $cp -r ./paho.mqtt.cpp/src/* /usr/include/mosquitto++ 
     Copy library files into appropriate directory:
     $cp -r ./paho.mqtt.cpp/build/src/lib* /usr/lib 
-
+# Installing OpenHab
+	$ git clone https://github.com/emersonargueta78/Smart-Home-Tutorial
 ## Follow the README on alexa-app-server-HA repository
     https://github.com/emersonargueta78/alexa-app-server-HA.git
 ## Follow the README on zigbeeModule repository
