@@ -90,5 +90,9 @@ http://www.openhab.org/downloads.html
 
 ## Follow the README on zigbeeModule repository
    link to repository: https://github.com/emersonargueta78/zigbeeModule
+   
 ## Follow the README on zWaveModule repository
    link to repository: https://github.com/emersonargueta78/zWaveModule
+
+## Follow the README on smart-home-esp8266 repository
+   link to repository: https://github.com/emersonargueta78/smart-home-esp8266.git
