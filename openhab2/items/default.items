@@ -1,0 +1,70 @@
+Switch i_am_home			{mqtt=">[localbroker:/home/command/i_am_home:command:ON:1],>[localbroker:/home/command/i_am_not_home:command:OFF:0]"}
+Switch i_am_leaving			{mqtt=">[localbroker:/home/command/i_am_leaving:command:ON:1],>[localbroker:/home/command/i_am_leaving:command:OFF:0]"}
+Switch movies				{mqtt=">[localbroker:/home/command/movies:command:ON:1],>[localbroker:/home/command/movies:command:OFF:0]"}
+Switch cooking				{mqtt=">[localbroker:/home/command/cooking:command:ON:1],>[localbroker:/home/command/cooking:command:OFF:0]"}
+	 
+Dimmer	bedroom_dimmer						{mqtt=">[localbroker:/home/bedroom/dimmer:command:*:default]"}
+Color	bedroom_color		<colorwheel>	{mqtt=">[localbroker:/home/bedroom/color:command:*:default]"}
+String 	bedroom_rgb  						{mqtt=">[localbroker:/home/bedroom/rgb:command:*:default]"}
+Switch	bedroom_lights 		<light>	 		{mqtt=">[localbroker:/home/bedroom/lights:command:ON:1],>[localbroker:/home/bedroom/lights:command:OFF:0]"}
+Switch	bedroom_fan			<fan>			{mqtt=">[localbroker:/home/bedroom/fan:command:ON:1],>[localbroker:/home/bedroom/fan:command:OFF:0]"}
+Switch	bedroom_tv			<television>	{mqtt=">[localbroker:/home/bedroom/tv:command:ON:1],>[localbroker:/home/bedroom/tv:command:OFF:0]"}
+Switch	bedroom_blinds						{mqtt=">[localbroker:/home/bedroom/blinds:command:ON:1],>[localbroker:/home/bedroom/blinds:command:OFF:0]"}
+
+Dimmer 	livingroom_dimmer 					{mqtt=">[localbroker:/home/livingroom/dimmer:command:*:default]"}
+Color	livingroom_color	<colorwheel>	{mqtt=">[localbroker:/home/livingroom/color:command:*:default]"}
+String 	livingroom_rgb  					{mqtt=">[localbroker:/home/livingroom/rgb:command:*:default]"}
+Switch 	livingroom_lights 	<light> 		{mqtt=">[localbroker:/home/livingroom/lights:command:ON:1],>[localbroker:/home/livingroom/lights:command:OFF:0]"}
+Switch 	livingroom_fan		<fan> 			{mqtt=">[localbroker:/home/livingroom/fan:command:ON:1],>[localbroker:/home/livingroom/fan:command:OFF:0]"}
+Switch 	livingroom_tv	 	<television>	{mqtt=">[localbroker:/home/livingroom/tv:command:ON:1],>[localbroker:/home/livingroom/tv:command:OFF:0]"}
+Switch 	livingroom_blinds 					{mqtt=">[localbroker:/home/livingroom/blinds:command:ON:1],>[localbroker:/home/livingroom/blinds:command:OFF:0]"}
+
+Number 	livingroom_temperature 	"Temperature [%.1f °F]" <temperature> 	{mqtt="<[localbroker:/home/livingroom/fahrenheit:state:default]"}
+Number 	livingroom_humidity 	"Humidity [%.1f ]" 		<humidity> 		{mqtt="<[localbroker:/home/livingroom/humidity:state:default]"}
+Number	livingroom_brightness	"Brightness [%.1f LUX]" <light>			{mqtt="<[localbroker:/home/livingroom/lux:state:default]"}
+
+
+Dimmer 	kitchen_dimmer   					{mqtt=">[localbroker:/home/kitchen/dimmer:command:*:default]"}
+Color	kitchen_color		<colorwheel>	{mqtt=">[localbroker:/home/kitchen/color:command:*:default]"}
+String 	kitchen_rgb  						{mqtt=">[localbroker:/home/kitchen/rgb:command:*:default]"}
+Switch 	kitchen_lights 		<light>			{mqtt=">[localbroker:/home/kitchen/lights:command:ON:1],>[localbroker:/home/kitchen/lights:command:OFF:0]"}
+Switch 	kitchen_fan 		<fan>   		{mqtt=">[localbroker:/home/kitchen/fan:command:ON:1],>[localbroker:/home/kitchen/fan:command:OFF:0]"}
+Switch 	kitchen_stove 		<kitchen> 		{mqtt=">[localbroker:/home/kitchen/stove:command:ON:1],>[localbroker:/home/kitchen/stove:command:OFF:0]"}
+
+Dimmer 	frontyard_dimmer 					{mqtt=">[localbroker:/home/frontyard/dimmer:command:*:default]"}
+Color	frontyard_color		<colorwheel>	{mqtt=">[localbroker:/home/frontyard/color:command:*:default]"}
+Switch 	frontyard_lights 	<light>			{mqtt=">[localbroker:/home/frontyard/lights:command:ON:1],>[localbroker:/home/frontyard/lights:command:OFF:0]"}
+Switch 	frontyard_camera					{mqtt=">[localbroker:/home/frontyard/camera:command:ON:1],>[localbroker:/home/frontyard/camera:command:OFF:0]"}
+// Switch 	frontyard_door 		<door>  		{mqtt=">[localbroker:/home/frontyard/door:command:ON:1],>[localbroker:/home/frontyard/door:command:OFF:0]"}
+// Switch  frontyard_door 		<door> { mqtt=">[localbroker:/home/frontyard/door:command:ON:1],>[localbroker:/home/frontyard/door:command:OFF:0],<[localbroker:/home/frontyard/door:state:MAP(onoff.map):%d]"}
+String	frontyard_pir			"Motion Detected? [%s]"	<boy_6>			{mqtt="<[localbroker:/home/frontyard/pir:state:default]"}
+
+Dimmer 	spareroom_dimmer 					{mqtt=">[localbroker:/home/spareroom/dimmer:command:*:default]"}
+Color	spareroom_color		<colorwheel>	{mqtt=">[localbroker:/home/spareroom/color:command:*:default]"}
+String 	spareroom_rgb  						{mqtt=">[localbroker:/home/spareroom/rgb:command:*:default]"}
+Switch 	spareroom_lights 	<light>			{mqtt=">[localbroker:/home/spareroom/lights:command:ON:1],>[localbroker:/home/spareroom/lights:command:OFF:0]"}
+Switch 	spareroom_fan 		<fan>   		{mqtt=">[localbroker:/home/spareroom/fan:command:ON:1],>[localbroker:/home/spareroom/fan:command:OFF:0]"}
+Switch 	spareroom_tv  		<television>   	{mqtt=">[localbroker:/home/spareroom/tv:command:ON:1],>[localbroker:/home/spareroom/tv:command:OFF:0]"}
+Switch 	spareroom_blinds 					{mqtt=">[localbroker:/home/spareroom/blinds:command:ON:1],>[localbroker:/home/spareroom/blinds:command:OFF:0]"}
+
+Dimmer 	balcony_dimmer   					{mqtt=">[localbroker:/home/balcony/dimmer:command:*:default]"}
+Color	balcony_color		<colorwheel>	{mqtt=">[localbroker:/home/balcony/color:command:*:default]"}
+Switch 	balcony_lights 		<light>  		{mqtt=">[localbroker:/home/balcony/lights:command:ON:1],>[localbroker:/home/balcony/lights:command:OFF:0]"}
+
+Dimmer 	garage_dimmer						{mqtt=">[localbroker:/home/garage/dimmer:command:*:default]"}
+Color	garage_color		<colorwheel>	{mqtt=">[localbroker:/home/garage/color:command:*:default]"}
+Switch 	garage_lights		<light>			{mqtt=">[localbroker:/home/garage/lights:command:ON:1],>[localbroker:/home/garage/lights:command:OFF:0]"}
+Switch 	garage_door     	<garagedoor> 	{mqtt=">[localbroker:/home/garage/door:command:ON:1],>[localbroker:/home/garage/door:command:OFF:0]"}
+
+Switch all_lights       	{mqtt=">[localbroker:/home/alllights:command:ON:1],>[localbroker:/home/alllights:command:OFF:0]"}
+Switch all_devices      	{mqtt=">[localbroker:/home/alldevices:command:ON:1],>[localbroker:/home/alldevices:command:OFF:0]"}
+Switch iot_shade	       	{mqtt=">[localbroker:/Z-Wave/Leviton/0x0001:command:ON:1],>[localbroker:/Z-Wave/Leviton/0x0001:command:OFF:0]"}
+Dimmer iot_shade_slider	 	{mqtt=">[localbroker:/Z-Wave/Leviton/0x0001:command:*:default]"}
+
+
+Dimmer zigbee_KeenHomeInc_SV01_410_MP_1_1_0x87c01500a3220 {mqtt=">[localbroker:/KeenHomeInc/SV01-410-MP-1.1/0x373f:command:*:default"}
+Dimmer zigbee_Cree_ConnectedA_1960WLightEquivalent_0x1ea54feffb9de2_slider {mqtt=">[localbroker:/Cree/ConnectedA-1960WLightEquivalent/0xd60c:command:*:default"}
+Switch zigbee_Cree_ConnectedA_1960WLightEquivalent_0x1ea54feffb9de2 {mqtt=">[localbroker:/Cree/ConnectedA-1960WLightEquivalent/0xd60c:command:ON:1],>[localbroker:/Cree/ConnectedA-1960WLightEquivalent/0xd60c:command:OFF:0]"}
+Dimmer zigbee_Cree_ConnectedA_1960WLightEquivalent_0x1ea54feffb9de2_slider {mqtt=">[localbroker:/Cree/ConnectedA-1960WLightEquivalent/0x43c0:command:*:default"}
+Switch zigbee_Cree_ConnectedA_1960WLightEquivalent_0x1ea54feffb9de2 {mqtt=">[localbroker:/Cree/ConnectedA-1960WLightEquivalent/0x43c0:command:ON:1],>[localbroker:/Cree/ConnectedA-1960WLightEquivalent/0x43c0:command:OFF:0]"}
+Dimmer zigbee_KeenHomeInc_SV01_410_MP_1_1_0x87c01500a3220 {mqtt=">[localbroker:/KeenHomeInc/SV01-410-MP-1.1/0x1e59:command:*:default"}

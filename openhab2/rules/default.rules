@@ -1,0 +1,430 @@
+import org.openhab.core.library.types.*
+import org.openhab.core.persistence.*
+import org.openhab.model.script.actions.*
+import java.lang.String
+import java.awt.Color
+
+
+rule "Front Yard PIR"
+when Item frontyard_pir changed
+then
+	if(frontyard_pir.state == "YES")
+	{
+		sendCommand(frontyard_lights,ON)
+	}
+	else
+	{
+		sendCommand(frontyard_lights,OFF)
+	}
+end
+
+rule "door open"
+when Item frontyard_door received command
+then
+	if(receivedCommand == ON)
+	{
+		sendCommand(livingroom_lights, ON)
+	}
+end
+
+rule "I am home"
+when Item i_am_home received command
+then	
+	if(receivedCommand == ON)
+	{
+		sendCommand(livingroom_lights,ON)
+		sendCommand(livingroom_blinds,ON)
+		sendCommand(kitchen_lights,ON)
+		postUpdate(i_am_home, OFF)
+	} 
+end
+
+rule "I am leaving"
+when Item i_am_leaving received command
+then
+	if(receivedCommand == ON)
+	{
+		sendCommand(all_devices, OFF)
+		postUpdate(i_am_leaving, OFF)
+	}
+end
+ 
+rule "Movie time"
+when Item movies received command
+then
+	if(receivedCommand == ON)
+	{
+		sendCommand(livingroom_blinds, OFF)
+		sendCommand(livingroom_lights,OFF)
+		sendCommand(livingroom_tv,ON)
+		postUpdate(movies,OFF)
+	}
+end
+
+rule "cooking"
+when Item cooking received command
+then
+	if(receivedCommand == ON)
+	{
+		sendCommand(kitchen_lights,ON)
+		sendCommand(kitchen_fan,ON)
+		postUpdate(cooking,OFF)
+	}
+end
+
+
+rule "bedroom dimmer"
+when Item bedroom_dimmer received command
+then
+	if(receivedCommand == 0)
+	{
+		postUpdate(bedroom_lights, OFF)
+	}
+	else
+	{
+		postUpdate(bedroom_lights, ON)
+	}
+end
+
+rule "bedroom switch"
+when Item bedroom_lights received command
+then
+	if(receivedCommand == ON)
+	{
+		sendCommand(bedroom_dimmer, 100)
+	}
+	else
+	{
+		sendCommand(bedroom_dimmer, 0)
+	}
+end
+
+/////////////////////////////////////////
+
+rule "livingroom dimmer"
+when Item livingroom_dimmer received command
+then
+	if(receivedCommand == 0)
+	{
+		postUpdate(livingroom_lights, OFF)
+	}
+	else
+	{
+		postUpdate(livingroom_lights, ON)
+	}
+end
+
+rule "livingroom switch"
+when Item livingroom_lights received command
+then
+	if(receivedCommand == ON)
+	{
+		sendCommand(livingroom_dimmer, 100)
+	}
+	else
+	{
+		sendCommand(livingroom_dimmer, 0)
+	}
+end
+
+/////////////////////////////////
+
+rule "kitchen dimmer"
+when Item kitchen_dimmer received command
+then
+	if(receivedCommand == 0)
+	{
+		postUpdate(kitchen_lights, OFF)
+	}
+	else
+	{
+		postUpdate(kitchen_lights, ON)
+	}
+end
+
+rule "kitchen switch"
+when Item kitchen_lights received command
+then
+	if(receivedCommand == ON)
+	{
+		sendCommand(kitchen_dimmer, 100)
+	}
+	else
+	{
+		sendCommand(kitchen_dimmer, 0)
+	}
+end
+
+//////////////////////////////////////////////
+
+rule "frontyard dimmer"
+when Item frontyard_dimmer received command
+then
+	if(receivedCommand == 0)
+	{
+		postUpdate(frontyard_lights, OFF)
+	}
+	else
+	{
+		postUpdate(frontyard_lights, ON)
+	}
+end
+
+rule "frontyard switch"
+when Item frontyard_lights received command
+then
+	if(receivedCommand == ON)
+	{
+		sendCommand(frontyard_dimmer, 100)
+	}
+	else
+	{
+		sendCommand(frontyard_dimmer, 0)
+	}
+end
+
+/////////////////////////////////////////////
+
+rule "garage dimmer"
+when Item garage_dimmer received command
+then
+	if(receivedCommand == 0)
+	{
+		postUpdate(garage_lights, OFF)
+	}
+	else
+	{
+		postUpdate(garage_lights, ON)
+	}
+end
+
+rule "garage switch"
+when Item garage_lights received command
+then
+	if(receivedCommand == ON)
+	{
+		sendCommand(garage_dimmer, 100)
+	}
+	else
+	{
+		sendCommand(garage_dimmer, 0)
+	}
+end
+
+/////////////////////////////
+
+rule "spareroom dimmer"
+when Item spareroom_dimmer received command
+then
+	if(receivedCommand == 0)
+	{
+		postUpdate(spareroom_lights, OFF)
+	}
+	else
+	{
+		postUpdate(spareroom_lights, ON)
+	}
+end
+
+rule "spareroom switch"
+when Item spareroom_lights received command
+then
+	if(receivedCommand == ON)
+	{
+		sendCommand(spareroom_dimmer, 100)
+	}
+	else
+	{
+		sendCommand(spareroom_dimmer, 0)
+	}
+end
+
+//////////////////////////////////////
+
+rule "balcony dimmer"
+when Item balcony_dimmer received command
+then
+	if(receivedCommand == 0)
+	{
+		postUpdate(balcony_lights, OFF)
+	}
+	else
+	{
+		postUpdate(balcony_lights, ON)
+	}
+end
+
+rule "balcony switch"
+when Item balcony_lights received command
+then
+	if(receivedCommand == ON)
+	{
+		sendCommand(balcony_dimmer, 100)
+	}
+	else
+	{
+		sendCommand(balcony_dimmer, 0)
+	}
+end
+
+///////////////////////////////////////////
+
+rule "bedroom color"
+when Item bedroom_color received command
+then
+	var HSBType hsbValue
+	var int redValue
+	var int greenValue
+	var int blueValue
+	var String RGBvalues
+	
+	hsbValue = bedroom_color.state as HSBType
+	redValue = hsbValue.red.intValue
+	greenValue = hsbValue.green.intValue
+	blueValue = hsbValue.blue.intValue
+	
+	RGBvalues= redValue.toString + ";" + greenValue.toString + ";" + blueValue.toString
+	sendCommand(bedroom_rgb, RGBvalues)
+	
+	logInfo("File","colooooorrr")
+end
+
+///////////////////////////////
+
+rule "livingroom color"
+when Item livingroom_color received command
+then
+	var HSBType hsbValue2
+	var int redValue2
+	var int greenValue2
+	var int blueValue2
+	var String RGBvalues2
+	
+	hsbValue2 = livingroom_color.state as HSBType
+	redValue2 = hsbValue2.red.intValue
+	greenValue2 = hsbValue2.green.intValue
+	blueValue2 = hsbValue2.blue.intValue
+	
+	RGBvalues2= redValue2.toString + ";" + greenValue2.toString + ";" + blueValue2.toString
+	sendCommand(livingroom_rgb, RGBvalues2)
+	
+	logInfo("File","colooooorrr")
+end
+
+//////////////////////////////////////
+
+rule "spareroom color"
+when Item spareroom_color received command
+then
+	var HSBType hsbValue3
+	var int redValue3
+	var int greenValue3
+	var int blueValue3
+	var String RGBvalues3
+	
+	hsbValue3 = spareroom_color.state as HSBType
+	redValue3 = hsbValue3.red.intValue
+	greenValue3 = hsbValue3.green.intValue
+	blueValue3 = hsbValue3.blue.intValue
+	
+	RGBvalues3= redValue3.toString + ";" + greenValue3.toString + ";" + blueValue3.toString
+	sendCommand(spareroom_rgb, RGBvalues3)
+	
+	logInfo("File","spareroom color")
+end
+
+//////////////////////////////////////
+
+rule "allLights"
+when Item all_lights received command
+var String message = "All lights aON"
+var String message1 = "All lights OFF"
+then
+	if(receivedCommand == ON){
+		logInfo("File",message)
+		sendCommand(bedroom_lights,ON)
+		sendCommand(livingroom_lights,ON)
+		sendCommand(kitchen_lights,ON)
+		sendCommand(frontyard_lights,ON)
+		sendCommand(spareroom_lights,ON)
+		sendCommand(balcony_lights,ON)
+		sendCommand(garage_lights,ON)
+	}
+	else if(receivedCommand == OFF){
+		logInfo("File",message1)
+		sendCommand(bedroom_lights,OFF)
+		sendCommand(livingroom_lights,OFF)
+		sendCommand(kitchen_lights,OFF)
+		sendCommand(frontyard_lights,OFF)
+		sendCommand(spareroom_lights,OFF)
+		sendCommand(balcony_lights,OFF)
+		sendCommand(garage_lights,OFF)
+		sendCommand(garage_lights,OFF)
+		sendCommand(bedroom_color,OFF)
+		sendCommand(livingroom_color,OFF)
+		sendCommand(spareroom_color,OFF)
+	}
+end
+
+rule "allDevices"
+when Item all_devices received command
+var String message = "All devices ON"
+var String message1 = "All devices OFF"
+then
+	if(receivedCommand == ON)
+	{
+		logInfo("File",message)
+		sendCommand(bedroom_lights,ON)
+		sendCommand(livingroom_lights,ON)
+		sendCommand(kitchen_lights,ON)
+		sendCommand(frontyard_lights,ON)
+		sendCommand(spareroom_lights,ON)
+		sendCommand(balcony_lights,ON)
+		sendCommand(garage_lights,ON)
+
+		sendCommand(bedroom_fan,ON)
+		sendCommand(livingroom_fan,ON)
+		sendCommand(kitchen_fan,ON)
+		sendCommand(spareroom_fan,ON)
+
+        sendCommand(bedroom_tv,ON)
+		sendCommand(livingroom_tv,ON)
+		sendCommand(spareroom_tv,ON)
+		
+        sendCommand(bedroom_blinds,ON)
+		sendCommand(livingroom_blinds,ON)
+		sendCommand(spareroom_blinds,ON)
+
+		sendCommand(kitchen_stove,ON)
+		sendCommand(frontyard_camera,ON)
+	}
+	else if(receivedCommand == OFF)
+	{	
+		logInfo("File",message1)
+		sendCommand(bedroom_lights,OFF)
+		sendCommand(livingroom_lights,OFF)
+		sendCommand(kitchen_lights,OFF)
+		sendCommand(frontyard_lights,OFF)
+		sendCommand(spareroom_lights,OFF)
+		sendCommand(balcony_lights,OFF)
+		sendCommand(garage_lights,OFF)
+		sendCommand(bedroom_color,'0,0,0')
+		sendCommand(livingroom_color,'0,0,0')
+		sendCommand(spareroom_color,'0,0,0')		
+		sendCommand(bedroom_fan,OFF)
+		sendCommand(livingroom_fan,OFF)
+		sendCommand(kitchen_fan,OFF)
+		sendCommand(spareroom_fan,OFF)
+
+        sendCommand(bedroom_tv,OFF)
+		sendCommand(livingroom_tv,OFF)
+		sendCommand(spareroom_tv,OFF)
+		
+        sendCommand(bedroom_blinds,OFF)
+		sendCommand(livingroom_blinds,OFF)
+		sendCommand(spareroom_blinds,OFF)
+
+		sendCommand(kitchen_stove,OFF)
+		sendCommand(frontyard_camera,OFF)
+	}
+end
