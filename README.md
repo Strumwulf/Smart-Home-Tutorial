@@ -13,18 +13,22 @@
 ## Set up paho mqtt libraries
 
 - Install mosquitto c library
+    
     $ git clone https://github.com/eclipse/paho.mqtt.c.git
-	  $ cd org.eclipse.paho.mqtt.c.git
-	  $ make
+    $ cd org.eclipse.paho.mqtt.c.git
+    $ make
     $ make install
     
-    Copy header files into appropriate directory:
+- Copy header files into appropriate directory:
+    
     $cp -r ./paho.mqtt.c/src/* /usr/include/mosquitto 
     
-    Copy library files into appropriate directory:
+- Copy library files into appropriate directory:
+    
     $cp -r ./paho.mqtt.c/build/src/lib* /usr/lib 
 
-    Install mosquitto c++ paho library:
+- Install mosquitto c++ paho library:
+    
     $ git clone https://github.com/eclipse/paho.mqtt.cpp
     $ cd paho.mqtt.cpp
     $ mkdir build
@@ -32,9 +36,12 @@
     $ cmake -DPAHO_BUILD_DOCUMENTATION=TRUE -DPAHO_BUILD_SAMPLES=TRUE -DPAHO_MQTT_C_PATH=../../paho.mqtt.c ..
     $ make
     
-    Copy header files into appropriate directory:
+- Copy header files into appropriate directory:
+    
     $cp -r ./paho.mqtt.cpp/src/* /usr/include/mosquitto++ 
-    Copy library files into appropriate directory:
+    
+- Copy library files into appropriate directory:
+
     $cp -r ./paho.mqtt.cpp/build/src/lib* /usr/lib 
     
 ## Follow the README on alexa-app-server-HA repository
