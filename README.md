@@ -12,7 +12,7 @@
   https://developer.artik.io/documentation/artik/getting-started/
 ## Set up paho mqtt libraries
 
-    Install mosquitto c library
+- Install mosquitto c library
     $ git clone https://github.com/eclipse/paho.mqtt.c.git
 	  $ cd org.eclipse.paho.mqtt.c.git
 	  $ make
