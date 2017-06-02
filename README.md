@@ -69,6 +69,12 @@ http://docs.openhab.org/installation/linux.html#package-repository-installation
 - Copy the openhab2 addons into appropriate folder
 
 		$ cp ./Smart-Home-Tutorial/addons/* /opt/openhab2/addons
+- Download additional addons from 
+
+http://www.openhab.org/downloads.html
+
+- Place additional addons into appropriate folder
+	$cp openhab-addons-2.0.0 /opt/openhab2/addons
 
 ### Configure MQTT addon in Openhab
 - In an internet searchbar go to:
