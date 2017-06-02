@@ -96,3 +96,6 @@ http://www.openhab.org/downloads.html
 
 ## Follow the README on smart-home-esp8266 repository
    link to repository: https://github.com/emersonargueta78/smart-home-esp8266.git
+
+## Follow the README on blank to install speaker recognition
+link to repository: 
