@@ -36,10 +36,30 @@
     $cp -r ./paho.mqtt.cpp/src/* /usr/include/mosquitto++ 
     Copy library files into appropriate directory:
     $cp -r ./paho.mqtt.cpp/build/src/lib* /usr/lib 
-# Installing OpenHab
-	$ git clone https://github.com/emersonargueta78/Smart-Home-Tutorial
+    
 ## Follow the README on alexa-app-server-HA repository
     https://github.com/emersonargueta78/alexa-app-server-HA.git
+    
+# Installing OpenHab
+	Follow the section named "Package Repository Installation" in the link:
+	http://docs.openhab.org/installation/linux.html#package-repository-installation
+	$ git clone https://github.com/emersonargueta78/Smart-Home-Tutorial
+	Copy the openhab2 configurations into appropriate folder
+	$ cp ./Smart-Home-Tutorial/openhab2/* /etc/openhab2
+	Copy the openhab2 addons into appropriate folder
+	$ cp ./Smart-Home-Tutorial/addons/* /opt/openhab2/addons
+### Configure MQTT addon in Openhab
+- In an internet searchbar go to:
+	
+	yourCreatedServerDomainName.org:8080
+	
+- Go to PaperUI link
+
+- In the sidebar click on Addons and install:
+	
+	MQTT Binding
+
+
 ## Follow the README on zigbeeModule repository
     link to repository: https://github.com/emersonargueta78/zigbeeModule
 ## Follow the README on zWaveModule repository
