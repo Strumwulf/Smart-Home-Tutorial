@@ -32,7 +32,7 @@
 
 - Install mosquitto c++ paho library:
     
-	    $ git clone https://github.com/eclipse/paho.mqtt.cpp
+	    $ git clone https://github.com/eclipse/paho.mqtt.cpp.git
 
 	    $ cd paho.mqtt.cpp
 
@@ -60,7 +60,7 @@ https://github.com/emersonargueta78/alexa-app-server-HA.git
 
 http://docs.openhab.org/installation/linux.html#package-repository-installation
 
-		$ git clone https://github.com/emersonargueta78/Smart-Home-Tutorial
+		$ git clone https://github.com/emersonargueta78/Smart-Home-Tutorial.git
 		
 - Copy the openhab2 configurations into appropriate folder
 
@@ -89,10 +89,10 @@ http://www.openhab.org/downloads.html
 
 
 ## Follow the README on zigbeeModule repository
-   link to repository: https://github.com/emersonargueta78/zigbeeModule
+   link to repository: https://github.com/emersonargueta78/zigbeeModule.git
    
 ## Follow the README on zWaveModule repository
-   link to repository: https://github.com/emersonargueta78/zWaveModule
+   link to repository: https://github.com/emersonargueta78/zWaveModule.git
 
 ## Follow the README on smart-home-esp8266 repository
    link to repository: https://github.com/emersonargueta78/smart-home-esp8266.git
