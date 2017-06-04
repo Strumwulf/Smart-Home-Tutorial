@@ -97,5 +97,9 @@ http://www.openhab.org/downloads.html
 ## Follow the README on smart-home-esp8266 repository
    link to repository: https://github.com/emersonargueta78/smart-home-esp8266.git
 
-## Follow the README on blank to install speaker recognition
-link to repository: 
+## Follow the README on PiWho to install speaker recognition
+   link to repository: https://github.com/Adirockzz95/Piwho
+   
+   Training and speaker recognition program files
+   link to repository:  https://github.com/Strumwulf/Speech-Recognition
+   
